@@ -1,0 +1,16 @@
+FROM node:16.13-alpine3.14
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+RUN rm -rf node_modules
+
+RUN yarn
+RUN yarn build
+
+EXPOSE 3000
+CMD yarn start:prod
+
+# docker tag nest-hello:0.0.2 557571393534.dkr.ecr.ap-northeast-2.amazonaws.com/nest-hello:0.0.2
+# docker push 557571393534.dkr.ecr.ap-northeast-2.amazonaws.com/nest-hello:0.0.2
